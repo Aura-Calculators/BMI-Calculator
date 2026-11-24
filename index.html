@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BMI Calculator — Calculate Body Mass Index in Metric (kg/cm) & Imperial (lbs/ft)</title>
+<meta name="description" content="Free BMI calculator for metric (kg/cm) and imperial (lbs/ft/in). WHO and Asia-Pacific thresholds, healthy weight range, BMR and daily calories, waist-to-height ratio. 100% private, runs in your browser.">
+<link rel="canonical" href="https://www.example.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BMI Calculator — Metric & Imperial, WHO & Asia-Pacific">
+<meta property="og:description" content="Know your BMI with precision and clarity. Healthy weight range, calories and waist-to-height ratio, all private in your browser.">
+<meta property="og:url" content="https://www.example.com/">
+<meta name="theme-color" content="#080d12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- GOOGLE ANALYTICS: paste your gtag.js snippet (G-XXXXXXXXXX) here -->
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"VitalMetric BMI Studio","url":"https://www.example.com/","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free BMI calculator with metric and imperial units, WHO and Asia-Pacific thresholds, calorie and waist-to-height tools."}
+</script>
+<!-- FAQPage JSON-LD is generated from the FAQ section by the script at the bottom of this file. -->
+
+<style>
+:root{--bg1:#080d12;--bg2:#0e1620;--card:#111b27;--ink:#f5f2eb;--mute:#94a3b8;--line:rgba(245,242,235,.08);--amber:#f59e0b;--teal:#14b8a6;--sky:#38bdf8;--em:#10b981;--rose:#f43f5e;--sans:'Plus Jakarta Sans',Inter,system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:var(--sans);color:var(--ink);line-height:1.65;background:linear-gradient(180deg,var(--bg1),var(--bg2));background-attachment:fixed;position:relative}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(600px 400px at 85% -5%,rgba(245,158,11,.12),transparent),radial-gradient(600px 400px at 5% 30%,rgba(20,184,166,.10),transparent);z-index:-1}
+a{color:var(--teal)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+header{position:sticky;top:0;z-index:20;background:rgba(8,13,18,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:20px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.nav nav{margin-left:auto;display:flex;gap:22px}
+.nav nav a{color:var(--mute);text-decoration:none;font-size:.92rem;font-weight:500}
+.nav nav a:hover{color:var(--ink)}
+.btn{font:600 .95rem var(--sans);border:0;border-radius:10px;padding:11px 20px;cursor:pointer;background:var(--amber);color:#1a1205;text-decoration:none;display:inline-block}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--mute)}
+.hero{padding:72px 0 40px}
+h1{font-size:clamp(2.2rem,5.5vw,3.9rem);line-height:1.08;letter-spacing:-.03em;margin:0 0 18px;max-width:15em;font-weight:800}
+.lead{color:var(--mute);font-size:1.15rem;max-width:40em;margin:0 0 28px}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding:0;list-style:none}
+.pills li{border:1px solid var(--line);background:rgba(17,27,39,.7);border-radius:99px;padding:6px 14px;font-size:.85rem;color:var(--mute)}
+.ad{margin:28px auto;text-align:center}
+.ad small{display:block;font-size:.65rem;color:#64748b;margin-bottom:4px}
+.ad .slot{margin:0 auto;max-width:728px;min-height:90px;display:flex;align-items:center;justify-content:center}
+#ad-slot-mid-native .slot,#ad-slot-article .slot{min-height:250px}
+section{padding:40px 0}
+h2{font-size:clamp(1.6rem,3.2vw,2.3rem);letter-spacing:-.02em;line-height:1.2;margin:0 0 12px}
+h3{font-size:1.2rem;margin:28px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+.ws{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:26px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:0 8px 10px 0}
+.seg button{font:500 .85rem var(--sans);background:transparent;color:var(--mute);border:0;padding:8px 14px;cursor:pointer}
+.seg button[aria-pressed=true]{background:rgba(245,242,235,.1);color:var(--ink)}
+.flt-l{font-size:.78rem;color:var(--mute);display:block;margin:6px 0 4px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+label{font-size:.85rem;color:var(--mute);display:block;margin-bottom:4px}
+input,select{width:100%;background:#0b131c;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font:600 1rem var(--mono)}
+select{font-family:var(--sans);font-weight:500}
+input.bad{border-color:var(--rose)}
+.err{color:var(--rose);font-size:.82rem;min-height:1.2em;margin:8px 0 0}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:18px;overflow-x:auto}
+.tabs button{font:600 .88rem var(--sans);background:none;border:0;color:var(--mute);padding:10px 12px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+.tabs button[aria-selected=true]{color:var(--ink);border-color:var(--amber)}
+.big{font:600 clamp(3rem,8vw,4.6rem)/1 var(--mono);letter-spacing:-.03em}
+.badge{display:inline-block;border-radius:99px;padding:4px 14px;font-weight:700;font-size:.9rem;margin-left:10px;vertical-align:middle;color:#06101a}
+.gauge{margin:22px 0 8px;position:relative;padding-top:18px}
+.bar{height:14px;border-radius:99px}
+.pin{position:absolute;top:8px;width:4px;height:34px;border-radius:4px;background:var(--ink);transform:translateX(-50%);left:0;transition:left .8s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 16px 4px rgba(245,242,235,.5)}
+.ticks{position:relative;height:22px;font:.7rem var(--mono);color:var(--mute)}
+.ticks span{position:absolute;transform:translateX(-50%)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px}
+.stat{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#0d1621}
+.stat b{display:block;font:600 1.25rem var(--mono)}
+.stat span{font-size:.78rem;color:var(--mute)}
+.note{font-size:.85rem;color:var(--mute);margin-top:14px}
+.hist{margin-top:22px}
+.hist ul{list-style:none;padding:0;margin:10px 0 0}
+.hist li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:8px 0;font:.85rem var(--mono);color:var(--mute)}
+.grid8{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:22px}
+.grid8 .card{padding:20px}
+.grid8 h3{margin:0 0 6px;font-size:1.02rem}
+.grid8 p{margin:0;color:var(--mute);font-size:.92rem}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;counter-reset:s}
+.steps div{border-left:3px solid var(--teal);padding:4px 0 4px 16px;counter-increment:s}
+.steps div::before{content:"Step " counter(s);font:.78rem var(--mono);color:var(--teal)}
+.steps p{margin:4px 0 0;color:var(--mute)}
+.guide{max-width:720px}
+.guide p,.guide li{color:#cfd6df}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin:14px 0}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+td:nth-child(n+2){font-family:var(--mono)}
+.tw{overflow-x:auto}
+details{border-bottom:1px solid var(--line);padding:14px 0}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--amber);font:600 1.3rem var(--mono);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--mute);margin:10px 0 0}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:40px 0 30px;background:rgba(8,13,18,.6)}
+.fcols{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:28px}
+footer h4{margin:0 0 10px;font-size:.95rem}
+footer a{display:block;color:var(--mute);text-decoration:none;font-size:.88rem;padding:3px 0}
+footer a:hover{color:var(--ink)}
+footer p{color:var(--mute);font-size:.85rem;margin:0}
+.copy{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:.78rem;color:#64748b}
+@media(max-width:860px){.ws,.steps,.fcols{grid-template-columns:1fr}.nav nav{display:none}.nav .btn{margin-left:auto}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="VitalMetric BMI Studio home">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="9" fill="#111b27" stroke="#f5f2eb" stroke-opacity=".2"/><path d="M6 19h5l3-9 4 13 3-8 1 4h4" fill="none" stroke="#14b8a6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="25" cy="9" r="2.4" fill="#f59e0b"/></svg>
+      VitalMetric <span style="color:var(--mute);font-weight:500">BMI Studio</span>
+    </a>
+    <nav aria-label="Main">
+      <a href="#calculator">Calculator</a><a href="#filters">Filters &amp; Modes</a><a href="#guide">Health Guide</a><a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn" href="#calculator">Check My BMI</a>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap">
+  <div class="hero">
+    <h1>Know your BMI with precision and clarity</h1>
+    <p class="lead">Enter your height and weight in metric or imperial units and see your BMI, healthy weight range, daily calories and waist-to-height ratio instantly. Nothing leaves your device.</p>
+    <a class="btn" href="#calculator">Calculate Your BMI</a>
+    <ul class="pills"><li>Metric &amp; Imperial</li><li>WHO &amp; Asia-Pacific Filters</li><li>Healthy Weight Range</li><li>100% Private</li></ul>
+  </div>
+
+  <!-- ADSTERRA: top leaderboard (728x90 desktop / 320x50 mobile). Paste your Adsterra <script> inside .slot below. -->
+  <div class="ad" id="ad-slot-top"><small>Advertisement</small><div class="slot"><!-- PASTE ADSTERRA SCRIPT HERE --></div></div>
+
+  <section id="calculator">
+    <h2>BMI calculator</h2>
+    <p class="lead" style="font-size:1rem">Results update as you type.</p>
+    <div class="ws">
+      <div class="card" id="filters">
+        <span class="flt-l">Units</span>
+        <div class="seg" id="f-unit"><button type="button" data-v="metric" aria-pressed="true">Metric (kg, cm)</button><button type="button" data-v="imperial" aria-pressed="false">Imperial (lbs, ft/in)</button></div>
+        <span class="flt-l">Standard</span>
+        <div class="seg" id="f-std"><button type="button" data-v="who" aria-pressed="true">WHO</button><button type="button" data-v="asia" aria-pressed="false">Asia-Pacific</button></div>
+        <span class="flt-l">Audience</span>
+        <div class="seg" id="f-aud"><button type="button" data-v="adult" aria-pressed="true">Adult (18+)</button><button type="button" data-v="youth" aria-pressed="false">Youth (5–17)</button></div>
+
+        <div class="fields">
+          <div id="h-metric"><label for="h-cm">Height (cm)</label><input id="h-cm" type="number" inputmode="decimal" min="1" step="0.1" value="170"></div>
+          <div id="h-imp" hidden><label for="h-ft">Height (ft / in)</label><div style="display:flex;gap:6px"><input id="h-ft" type="number" inputmode="numeric" min="0" step="1" value="5" aria-label="Feet"><input id="h-in" type="number" inputmode="decimal" min="0" step="0.5" value="7" aria-label="Inches"></div></div>
+          <div><label for="w" id="w-l">Weight (kg)</label><input id="w" type="number" inputmode="decimal" min="1" step="0.1" value="68"></div>
+        </div>
+        <div class="fields" id="extra">
+          <div><label for="age">Age (years)</label><input id="age" type="number" min="5" max="120" step="1" value="30"></div>
+          <div><label for="sex">Sex</label><select id="sex"><option value="m">Male</option><option value="f">Female</option></select></div>
+          <div style="grid-column:1/-1"><label for="act">Activity level</label><select id="act"><option value="1.2">Sedentary (desk job, little exercise)</option><option value="1.375" selected>Light (1–3 days/week)</option><option value="1.55">Moderate (3–5 days/week)</option><option value="1.725">Active (6–7 days/week)</option><option value="1.9">Very active (hard training or physical job)</option></select></div>
+          <div style="grid-column:1/-1"><label for="waist" id="waist-l">Waist (cm, optional)</label><input id="waist" type="number" inputmode="decimal" min="0" step="0.1" placeholder="e.g. 82"></div>
+        </div>
+        <p class="err" id="err" role="alert"></p>
+        <div class="row">
+          <button class="btn" type="button" id="calc">Calculate &amp; save</button>
+          <button class="btn ghost" type="button" id="reset">Reset</button>
+          <button class="btn ghost" type="button" id="copy">Copy summary</button>
+        </div>
+      </div>
+
+      <div class="card" aria-live="polite">
+        <div class="tabs" role="tablist">
+          <button role="tab" aria-selected="true" data-t="t1">BMI &amp; weight target</button>
+          <button role="tab" aria-selected="false" data-t="t2">BMR &amp; calories</button>
+          <button role="tab" aria-selected="false" data-t="t3">Waist &amp; body fat</button>
+        </div>
+        <div id="t1">
+          <div><span class="big" id="bmi">--</span><span class="badge" id="cat">--</span></div>
+          <div class="gauge"><div class="bar" id="bar"></div><div class="pin" id="pin"></div></div>
+          <div class="ticks" id="ticks"></div>
+          <div class="stats">
+            <div class="stat"><b id="range">--</b><span>Healthy weight range</span></div>
+            <div class="stat"><b id="delta">--</b><span id="delta-l">To reach healthy BMI</span></div>
+            <div class="stat"><b id="pi">--</b><span>Ponderal index (kg/m³)</span></div>
+          </div>
+          <p class="note" id="ynote" hidden>Youth mode: children and teens are assessed with BMI-for-age percentiles, not adult cutoffs. The category shown is for reference only; ask a paediatrician or use the WHO growth charts.</p>
+        </div>
+        <div id="t2" hidden>
+          <div class="stats">
+            <div class="stat"><b id="bmr">--</b><span>BMR (Mifflin-St Jeor), kcal</span></div>
+            <div class="stat"><b id="tdee">--</b><span>Maintenance, kcal/day</span></div>
+            <div class="stat"><b id="cut">--</b><span>Mild deficit (−10%)</span></div>
+            <div class="stat"><b id="bulk">--</b><span>Mild surplus (+10%)</span></div>
+          </div>
+          <p class="note">Estimates only. Needs age, sex and activity level. Real needs vary with muscle mass, genetics and health.</p>
+        </div>
+        <div id="t3" hidden>
+          <div class="stats">
+            <div class="stat"><b id="whtr">--</b><span>Waist-to-height ratio</span></div>
+            <div class="stat"><b id="whtr-c">--</b><span>WHtR reading</span></div>
+            <div class="stat"><b id="bf">--</b><span>Estimated body fat</span></div>
+          </div>
+          <p class="note">A WHtR under 0.5 is commonly used as a healthy marker. Body fat uses the Deurenberg equation (BMI, age, sex) and can be off by several points.</p>
+        </div>
+        <div class="hist">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px"><strong>Saved checks</strong>
+            <div class="seg" id="f-hist" style="margin:0"><button type="button" data-v="all" aria-pressed="true">All</button><button type="button" data-v="metric" aria-pressed="false">Metric</button><button type="button" data-v="imperial" aria-pressed="false">Imperial</button></div></div>
+          <ul id="hlist"></ul>
+          <button class="btn ghost" type="button" id="hclear" style="margin-top:10px;padding:7px 14px">Clear history</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADSTERRA: native / responsive banner. Paste your Adsterra <script> inside .slot below. -->
+  <div class="ad" id="ad-slot-mid-native"><small>Advertisement</small><div class="slot"><!-- PASTE ADSTERRA NATIVE SCRIPT HERE --></div></div>
+
+  <section>
+    <h2>Built for clear, practical health tracking</h2>
+    <div class="grid8">
+      <div class="card"><h3>Instant Metric &amp; Imperial Switch</h3><p>Flip between kg/cm and lbs/ft/in. Your values convert automatically.</p></div>
+      <div class="card"><h3>WHO &amp; Asia-Pacific Thresholds</h3><p>Category cutoffs and the gauge adjust to the standard you pick.</p></div>
+      <div class="card"><h3>Visual BMI Spectrum Gauge</h3><p>A glowing pin slides to your exact BMI and lights the active band.</p></div>
+      <div class="card"><h3>Healthy Weight Range Finder</h3><p>See the weight range for your height and how far you are from it.</p></div>
+      <div class="card"><h3>Daily Calorie &amp; BMR Estimator</h3><p>Maintenance calories plus a mild deficit and mild surplus target.</p></div>
+      <div class="card"><h3>Waist-to-Height Ratio Check</h3><p>Add your waist to see a measure of where weight is carried.</p></div>
+      <div class="card"><h3>Local Progress History</h3><p>Save checks on this device and filter them by unit system.</p></div>
+      <div class="card"><h3>Zero Server Tracking</h3><p>All math runs in your browser. We never receive your numbers.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Three steps. That's it.</h2>
+    <div class="steps">
+      <div><h3 style="margin-top:4px">Pick your units</h3><p>Choose metric or imperial.</p></div>
+      <div><h3 style="margin-top:4px">Enter your numbers</h3><p>Add height and weight, plus optional filters.</p></div>
+      <div><h3 style="margin-top:4px">Read your results</h3><p>See your BMI, target range and daily calories.</p></div>
+    </div>
+  </section>
+
+  <section id="guide">
+    <article class="guide">
+      <h2>The complete guide to BMI and body metrics</h2>
+      <p>Body mass index, or BMI, is a single number that relates your weight to your height. It was devised in the 1830s by the Belgian mathematician Adolphe Quetelet and popularised as a population-level screening measure in the twentieth century. Today, health authorities including the World Health Organization use it because it is cheap, fast and repeatable. This guide explains how it is calculated, what the categories mean, where it falls short and how to combine it with other measures.</p>
+
+      <h3>How to calculate BMI: the formula</h3>
+      <p>In metric units, BMI equals weight in kilograms divided by height in metres squared. A person who weighs 68 kg and is 1.70 m tall has a BMI of 68 ÷ (1.70 × 1.70) = 23.5. If you measure height in centimetres, divide by 100 first.</p>
+      <p>In imperial units, BMI equals 703 times weight in pounds divided by height in inches squared. Someone who weighs 150 lbs and is 67 inches tall has a BMI of 703 × 150 ÷ 4,489 = 23.5. The factor 703 simply converts pounds and inches to the metric result, so both formulas give the same answer for the same person. To convert feet and inches to inches, multiply feet by 12 and add the remaining inches.</p>
+
+      <h3>Standard BMI classification ranges</h3>
+      <p>For adults aged 18 and over, the WHO classification is shown below. The same table applies to men and women.</p>
+      <div class="tw"><table><thead><tr><th>Category</th><th>WHO BMI</th><th>Asia-Pacific BMI</th></tr></thead><tbody>
+        <tr><td>Underweight</td><td>below 18.5</td><td>below 18.5</td></tr>
+        <tr><td>Normal</td><td>18.5 – 24.9</td><td>18.5 – 22.9</td></tr>
+        <tr><td>Overweight</td><td>25.0 – 29.9</td><td>23.0 – 27.4</td></tr>
+        <tr><td>Obese</td><td>30.0 and above</td><td>27.5 and above</td></tr></tbody></table></div>
+      <p>These bands are statistical groupings. The risk of conditions such as type 2 diabetes, high blood pressure and heart disease tends to rise across the range, but there is no cliff edge at any single number. Someone at 24.8 is not meaningfully different from someone at 25.1.</p>
+
+      <h3>Why BMI is a screening tool, not a diagnosis</h3>
+      <p>BMI uses only two inputs. It cannot tell muscle from fat, and it says nothing about where fat is stored. That has several consequences.</p>
+      <h3>Athletes and muscular people</h3>
+      <p>Muscle is denser than fat. A strength athlete or rugby player can have a BMI in the overweight range while carrying low body fat. For these people BMI often overstates risk, and measures such as waist circumference, skinfolds or a body composition scan are more informative.</p>
+      <h3>Older adults</h3>
+      <p>With age, people tend to lose muscle and height and gain relative fat, so the same BMI can hide a very different body composition. In later life, a BMI slightly above the normal band is sometimes associated with better outcomes than a lower one, and unintentional weight loss is often a bigger concern than a slightly high number.</p>
+      <h3>Body composition and fat distribution</h3>
+      <p>Two people with the same BMI can have different health profiles. Fat stored around the abdomen, known as visceral fat, is more strongly linked to metabolic risk than fat stored on the hips and thighs. This is why waist measurements add useful context.</p>
+
+      <!-- ADSTERRA: in-content banner (728x90 / 300x250). Paste your Adsterra <script> inside .slot below. -->
+      <div class="ad" id="ad-slot-article"><small>Advertisement</small><div class="slot"><!-- PASTE ADSTERRA IN-CONTENT SCRIPT HERE --></div></div>
+
+      <h3>WHO versus regional cutoffs</h3>
+      <p>Research has shown that, at the same BMI, people of South Asian, East Asian and some other backgrounds tend to carry more body fat and develop type 2 diabetes and cardiovascular disease at lower BMIs than people of European descent. For that reason, WHO expert consultations and several national bodies in Asia use lower action points: roughly 23 for increased risk and 27.5 for high risk. The calculator's Asia-Pacific filter applies these cutoffs. If you are of Asian heritage, comparing both views gives a fuller picture. Other groups, such as some Pacific Islander populations, may have higher appropriate cutoffs, so talk with a clinician who knows your context.</p>
+
+      <h3>Children and teens</h3>
+      <p>Adult cutoffs do not apply to people aged 5 to 17. Children grow at different rates, and healthy BMI changes with age and sex. Clinicians plot a child's BMI on a growth chart and read it as a percentile for their age and sex. The WHO growth reference defines overweight and obesity in this age group by standard deviations above the median. If you are worried about a child's weight, avoid restrictive diets and speak to a paediatrician.</p>
+
+      <h3>Healthy weight range for your height</h3>
+      <p>Rearranging the BMI formula gives a weight range for any height. Multiply the lower cutoff (18.5) and upper cutoff (25 for WHO, 23 for Asia-Pacific) by your height in metres squared. At 1.70 m, the WHO range is about 53.5 to 72.3 kg. Treat it as a broad target zone, not a single ideal weight.</p>
+
+      <h3>Combining BMI with waist measurements</h3>
+      <p>The waist-to-height ratio divides waist circumference by height, using the same units for both. A ratio below 0.5 is widely used as a simple healthy marker, and values from 0.5 to 0.59 suggest more abdominal fat than ideal. Because it adjusts for height, one cut-off works across most adults, and some studies find it predicts cardiometabolic risk better than BMI alone. Measure at the midpoint between the lowest rib and the top of the hip bone, after a normal breath out, with the tape snug but not compressing the skin.</p>
+
+      <h3>Understanding BMR and daily calories</h3>
+      <p>Basal metabolic rate is the energy your body uses at rest. The Mifflin-St Jeor equation estimates it from weight, height, age and sex, and it is considered among the more accurate predictive equations for general populations. Multiplying BMR by an activity factor, from 1.2 for sedentary to 1.9 for very active, estimates the calories needed to maintain your weight. A modest deficit or surplus of around 10 percent is a sensible starting point, and you should adjust it based on how your weight and energy respond over several weeks.</p>
+
+      <h3>Sustainable weight management habits</h3>
+      <ul>
+        <li><strong>Aim for gradual change.</strong> Losing around 0.25 to 0.5 kg (0.5 to 1 lb) a week is easier to sustain than crash dieting.</li>
+        <li><strong>Prioritise protein and fibre.</strong> They help you feel full and protect muscle during weight loss.</li>
+        <li><strong>Move daily.</strong> Aim for at least 150 minutes of moderate activity a week, plus two strength sessions.</li>
+        <li><strong>Sleep 7 to 9 hours.</strong> Short sleep affects appetite hormones and makes choices harder.</li>
+        <li><strong>Track trends, not days.</strong> Weight fluctuates with water and food volume. Compare weekly averages.</li>
+        <li><strong>Get support.</strong> A doctor or registered dietitian can tailor advice, especially with medical conditions.</li>
+      </ul>
+      <p><em>This content is educational and is not medical advice. Consult a qualified professional about your health.</em></p>
+    </article>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently asked questions</h2>
+    <div id="faq-list">
+      <details><summary>What is a normal BMI range?</summary><p>For adults, the WHO defines a normal BMI as 18.5 to 24.9. Asia-Pacific guidance uses 18.5 to 22.9 as the normal band.</p></details>
+      <details><summary>Is BMI accurate for muscular people?</summary><p>Not always. BMI cannot distinguish muscle from fat, so athletes and heavily muscled people can score as overweight with low body fat. Waist measurements or body composition tests are better in that case.</p></details>
+      <details><summary>Does BMI work the same for children and teens?</summary><p>No. For ages 5 to 17, BMI is interpreted as a percentile for age and sex using growth charts. Adult categories do not apply, which is why this calculator shows a youth note.</p></details>
+      <details><summary>How do I convert between metric and imperial units?</summary><p>One kilogram is 2.2046 pounds, and one inch is 2.54 centimetres. The calculator converts your entered values automatically when you switch units.</p></details>
+      <details><summary>Is BMI reliable during pregnancy?</summary><p>No. BMI is not designed for pregnancy. Pre-pregnancy BMI is used by clinicians to guide weight-gain recommendations, so ask your midwife or doctor.</p></details>
+      <details><summary>Should older adults use the same BMI ranges?</summary><p>Many guidelines accept a slightly higher BMI for older adults, since muscle loss and frailty are important risks. Discuss your results with your doctor.</p></details>
+      <details><summary>What is the waist-to-height ratio?</summary><p>It is your waist circumference divided by your height. A value under 0.5 is generally seen as healthier, and higher values suggest more abdominal fat.</p></details>
+      <details><summary>How accurate are the calorie and body fat estimates?</summary><p>They are population-based estimates and can be off by a meaningful margin for an individual. Use them as a starting point and adjust to real-world results.</p></details>
+      <details><summary>Can BMI diagnose a health condition?</summary><p>No. BMI is a screening tool. A diagnosis needs a clinician who considers your history, blood tests, blood pressure, waist size and more.</p></details>
+      <details><summary>Is my data private?</summary><p>Yes. All calculations happen in your browser. Saved checks stay in this browser's local storage, and you can clear them at any time.</p></details>
+    </div>
+  </section>
+
+  <!-- ADSTERRA: footer banner. Paste your Adsterra <script> inside .slot below. -->
+  <div class="ad" id="ad-slot-footer"><small>Advertisement</small><div class="slot"><!-- PASTE ADSTERRA FOOTER SCRIPT HERE --></div></div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fcols">
+      <div><h4>VitalMetric BMI Studio</h4><p>A free, private BMI and body metrics calculator. Built to give clear numbers and honest context.</p></div>
+      <div><h4>Calculator</h4><a href="#calculator">BMI calculator</a><a href="#filters">Filters &amp; modes</a><a href="#guide">Health guide</a><a href="#faq">FAQ</a></div>
+      <div><h4>BMI reference</h4><a href="#guide">BMI formula</a><a href="#guide">WHO categories</a><a href="#guide">Asia-Pacific cutoffs</a><a href="#guide">Waist-to-height</a></div>
+      <div><h4>Privacy &amp; disclaimer</h4><p>Your inputs never leave your device. Results are educational and are not medical advice. See a healthcare professional for personal guidance.</p></div>
+    </div>
+    <div class="copy">© <span id="yr"></span> VitalMetric BMI Studio. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var S={unit:'metric',std:'who',aud:'adult',hist:'all'};
+  var COL={u:'#38bdf8',n:'#10b981',o:'#f59e0b',b:'#f43f5e'};
+  var MIN=15,MAX=40;
+  var th=function(){return S.std==='who'?[18.5,25,30]:[18.5,23,27.5]};
+  var pct=function(v){return Math.max(0,Math.min(100,(v-MIN)/(MAX-MIN)*100))};
+  var LB=2.20462,IN=2.54;
+
+  function pressed(group,val){[].forEach.call($(group).children,function(b){b.setAttribute('aria-pressed',b.dataset.v===val)})}
+  function bind(group,key,cb){$(group).addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var old=S[key];S[key]=b.dataset.v;pressed(group,S[key]);if(cb)cb(old);render()})}
+
+  function readH(){return S.unit==='metric'?parseFloat($('h-cm').value):((parseFloat($('h-ft').value)||0)*12+(parseFloat($('h-in').value)||0))*IN}
+  function readW(){var w=parseFloat($('w').value);return S.unit==='metric'?w:w/LB}
+  function readWaist(){var v=parseFloat($('waist').value);if(!(v>0))return null;return S.unit==='metric'?v:v*IN}
+
+  bind('f-unit','unit',function(old){
+    if(old===S.unit)return;
+    var h=readH(),w=readW(),wa=readWaist();
+    var m=S.unit==='metric';
+    $('h-metric').hidden=!m;$('h-imp').hidden=m;
+    $('w-l').textContent=m?'Weight (kg)':'Weight (lbs)';
+    $('waist-l').textContent=m?'Waist (cm, optional)':'Waist (in, optional)';
+    if(h>0){if(m)$('h-cm').value=h.toFixed(1);else{var ti=h/IN;$('h-ft').value=Math.floor(ti/12);$('h-in').value=(ti%12).toFixed(1)}}
+    if(w>0)$('w').value=(m?w:w*LB).toFixed(1);
+    if(wa)$('waist').value=(m?wa:wa/IN).toFixed(1);
+  });
+  bind('f-std','std');
+  bind('f-aud','aud',function(){$('ynote').hidden=S.aud!=='youth';$('age').min=S.aud==='youth'?5:18;$('age').max=S.aud==='youth'?17:120;if(S.aud==='youth'&&$('age').value>17)$('age').value=12;if(S.aud==='adult'&&$('age').value<18)$('age').value=30});
+  bind('f-hist','hist',function(){drawHist()});
+
+  [].forEach.call(document.querySelectorAll('.tabs button'),function(b){b.addEventListener('click',function(){
+    [].forEach.call(document.querySelectorAll('.tabs button'),function(x){x.setAttribute('aria-selected',x===b);$(x.dataset.t).hidden=x!==b})})});
+
+  function setGauge(){
+    var t=th(),p=[pct(t[0]),pct(t[1]),pct(t[2])];
+    $('bar').style.background='linear-gradient(90deg,'+COL.u+' 0 '+p[0]+'%,'+COL.n+' '+p[0]+'% '+p[1]+'%,'+COL.o+' '+p[1]+'% '+p[2]+'%,'+COL.b+' '+p[2]+'% 100%)';
+    $('ticks').innerHTML=[MIN].concat(t,[MAX]).map(function(v){return '<span style="left:'+pct(v)+'%">'+v+'</span>'}).join('');
+  }
+  function cat(b){var t=th();if(b<t[0])return['Underweight',COL.u];if(b<t[1])return['Normal',COL.n];if(b<t[2])return['Overweight',COL.o];return['Obese',COL.b]}
+  var f=function(n,d){return n.toFixed(d)};
+  var wu=function(kg){return S.unit==='metric'?f(kg,1)+' kg':f(kg*LB,1)+' lbs'};
+  var cur=null;
+
+  function render(){
+    setGauge();
+    var h=readH(),w=readW(),ok=h>0&&w>0&&isFinite(h)&&isFinite(w);
+    $('h-cm').classList.toggle('bad',S.unit==='metric'&&!(h>0));
+    $('w').classList.toggle('bad',!(w>0));
+    $('err').textContent=ok?'':'Enter a height and weight greater than zero.';
+    if(!ok){cur=null;['bmi','range','delta','pi','bmr','tdee','cut','bulk','whtr','whtr-c','bf'].forEach(function(i){$(i).textContent='--'});$('cat').textContent='--';$('cat').style.background='#334155';return}
+    var m=h/100,bmi=w/(m*m),t=th(),c=cat(bmi);
+    $('bmi').textContent=f(bmi,1);
+    $('cat').textContent=S.aud==='youth'?c[0]+' (adult scale)':c[0];$('cat').style.background=c[1];
+    $('pin').style.left=pct(bmi)+'%';
+    var lo=t[0]*m*m,hi=t[1]*m*m;
+    $('range').textContent=S.unit==='metric'?f(lo,1)+'–'+f(hi,1)+' kg':f(lo*LB,0)+'–'+f(hi*LB,0)+' lbs';
+    var d=0;if(bmi<t[0])d=lo-w;else if(bmi>=t[1])d=hi-w;
+    $('delta').textContent=d===0?'In range':(d>0?'+':'−')+wu(Math.abs(d));
+    $('delta-l').textContent=d===0?'You are within the healthy range':(d>0?'To gain to reach healthy BMI':'To lose to reach healthy BMI');
+    $('pi').textContent=f(w/(m*m*m),1);
+    var age=parseFloat($('age').value),male=$('sex').value==='m',act=parseFloat($('act').value);
+    if(age>0){
+      var bmr=10*w+6.25*h-5*age+(male?5:-161),td=bmr*act;
+      $('bmr').textContent=Math.round(bmr);$('tdee').textContent=Math.round(td);$('cut').textContent=Math.round(td*.9);$('bulk').textContent=Math.round(td*1.1);
+      var bf=1.2*bmi+0.23*age-10.8*(male?1:0)-5.4;
+      $('bf').textContent=S.aud==='youth'?'Adults only':f(Math.max(2,bf),1)+'%';
+    }else{['bmr','tdee','cut','bulk','bf'].forEach(function(i){$(i).textContent='--'})}
+    var wa=readWaist();
+    if(wa){var r=wa/h;$('whtr').textContent=f(r,2);$('whtr-c').textContent=r<.4?'Low':r<.5?'Healthy':r<.6?'Raised':'High'}
+    else{$('whtr').textContent='--';$('whtr-c').textContent='Add waist'}
+    cur={bmi:f(bmi,1),cat:c[0],unit:S.unit,std:S.std,wt:wu(w),ht:S.unit==='metric'?f(h,0)+' cm':Math.floor(h/IN/12)+"'"+f(h/IN%12,1)+'"',range:$('range').textContent,t:Date.now()};
+  }
+
+  /* History */
+  function load(){try{return JSON.parse(localStorage.getItem('vm_bmi_hist')||'[]')}catch(e){return[]}}
+  function store(a){try{localStorage.setItem('vm_bmi_hist',JSON.stringify(a.slice(0,30)))}catch(e){}}
+  function drawHist(){
+    var a=load().filter(function(x){return S.hist==='all'||x.unit===S.hist});
+    $('hlist').innerHTML=a.length?a.map(function(x){return '<li><span>'+new Date(x.t).toLocaleDateString()+' · '+x.wt+'</span><span>BMI '+x.bmi+' · '+x.cat+'</span></li>'}).join(''):'<li>No saved checks yet. Press “Calculate &amp; save”.</li>';
+  }
+  $('calc').addEventListener('click',function(){render();if(!cur)return;var a=load();a.unshift(cur);store(a);drawHist()});
+  $('hclear').addEventListener('click',function(){store([]);drawHist()});
+  $('reset').addEventListener('click',function(){
+    S.unit='metric';S.std='who';S.aud='adult';pressed('f-unit','metric');pressed('f-std','who');pressed('f-aud','adult');
+    $('h-metric').hidden=false;$('h-imp').hidden=true;$('w-l').textContent='Weight (kg)';$('waist-l').textContent='Waist (cm, optional)';$('ynote').hidden=true;
+    $('h-cm').value=170;$('w').value=68;$('age').value=30;$('age').min=18;$('age').max=120;$('sex').value='m';$('act').value='1.375';$('waist').value='';render()});
+  $('copy').addEventListener('click',function(){
+    if(!cur){return}
+    var txt='BMI '+cur.bmi+' ('+cur.cat+') · Height '+cur.ht+' · Weight '+cur.wt+' · Healthy range '+cur.range+' · '+(cur.std==='who'?'WHO':'Asia-Pacific')+' standard';
+    var done=function(){$('copy').textContent='Copied';setTimeout(function(){$('copy').textContent='Copy summary'},1500)};
+    if(navigator.clipboard)navigator.clipboard.writeText(txt).then(done,function(){});else{var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(ta)}
+  });
+  ['h-cm','h-ft','h-in','w','age','sex','act','waist'].forEach(function(i){$(i).addEventListener('input',render)});
+
+  /* FAQPage JSON-LD generated from the on-page FAQ */
+  var q=[].map.call(document.querySelectorAll('#faq-list details'),function(d){return{"@type":"Question","name":d.querySelector('summary').textContent,"acceptedAnswer":{"@type":"Answer","text":d.querySelector('p').textContent}}});
+  var s=document.createElement('script');s.type='application/ld+json';s.text=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":q});document.head.appendChild(s);
+
+  $('yr').textContent=new Date().getFullYear();
+  render();drawHist();
+})();
+</script>
+</body>
+</html>
